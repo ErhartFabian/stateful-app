@@ -1,3 +1,7 @@
+*{
+  font-family: 'Fredoka One', cursive;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +39,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+fieldset{
+  margin: 40px;
+  border-radius: 15px;
+}
+
+button{
+  box-sizing: border-box;
+  margin-left: 1%;
 }

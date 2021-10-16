@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React,{useState} from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  let myStorage =  window.localStorage;
+  const [nombre,setNombre] = useState(obtenerNombre());
+
+
+
+  function guardarNombre(event){
+    event.preventDefault();
+    const nom = event.target.inpNombre.value;
+    setNombre(nom);
+    myStorage.setItem('nombre',nom);
+  }
+
+
+  function obtenerNombre(){
+    return myStorage.getItem('nombre');
+  } 
+
+
+  return(
+    <fieldset className="App">
+      <form onSubmit={guardarNombre}>
+        <label>Nombre: </label>
+
+        <input type="text" id="inpNombre" />
+      
+        <button type="submit">Submit</button>
+        <p>Hello: {nombre ? nombre : ""}</p>
+      </form>
+    </fieldset>
   );
 }
 
